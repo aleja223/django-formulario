@@ -1,0 +1,32 @@
+<p>Hello</p>
+
+<form
+  action=""
+  method="post"
+  style="background-color: bisque; padding: 15px; border-radius: 8px">
+  {% csrf_token %} {{form.as_p}}
+  <input
+    type="submit"
+    value="submit"
+    style="
+      padding: 5px 10px;
+      border-radius: 5px;
+      background-color: green;
+      color: white;
+      border: none;
+    " />
+</form>
+
+{% if submitted_data %}
+<p style="color: green; font-weight: bold; margin-top: 10px">
+  {{ success_message }}
+</p>
+{% endif %} {% if submitted_data %}
+<h3>Datos enviados:</h3>
+<ul>
+  <li><b>Nombre:</b> {{ submitted_data.first_name }}</li>
+  <li><b>Apellido:</b> {{ submitted_data.last_name }}</li>
+  <li><b>Turno:</b> {{ submitted_data.shift }}</li>
+  <li><b>Hora:</b> {{ submitted_data.time_log }}</li>
+</ul>
+{% endif %}
